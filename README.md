@@ -1,36 +1,64 @@
 # FUTURE_FS_02
-Mini CRM 
+Mini CRM 🖥️
 
-📌 Project Overview  
-This project is a **Mini CRM System** developed using HTML and CSS.  
-It is created to demonstrate **basic frontend development skills**, **form handling**, and **table layout**.  
-This project is internship-ready and hosted on GitHub Pages.
+**Teaser Mini CRM** is a lightweight Customer Relationship Management (CRM) web application designed for small businesses to manage leads, customers, and interactions efficiently.  
+This project was created as part of the **Future Internship Program** to showcase practical web development and client management skills.
 
-🎯 Objective  
-The main objectives of this project are:  
-- To build a simple and clean Mini CRM system  
-- To understand the basics of HTML and CSS  
-- To create and manage a GitHub repository  
-- To submit a well-documented and professional project for evaluation
+---
 
-🛠 Technologies Used  
-- HTML5  
-- CSS3  
-- GitHub Pages  
+## 🌟 Project Overview
+- Provides a **simple interface** to manage leads and customer information.  
+- Allows users to **add, edit, and delete leads**.  
+- Helps businesses **track interactions** and maintain organized customer records.  
+- Built using **HTML, CSS, and JavaScript**, focusing on functionality and usability.  
 
-📂 Project Structure  
-- `index.html` – Main webpage file  
-- `style.css` – Styling file  
-- `README.md` – Project documentation  
-- `frontend/` – Folder containing front-end files  
-- `backend/` – Placeholder for future backend
+---
 
-🚀 How to Run the Project  
-1. Open the repository  
-2. Download or clone the project  
-3. Open `index.html` in any web browser  
-4. Or visit the live site on GitHub Pages: [Paste your live site link here]
+## 🛠 Technologies Used
+- **HTML** – Structure of the application  
+- **CSS** – Styling and layout  
+- **JavaScript** – Interactivity, CRUD functionality (Create, Read, Update, Delete)  
+- **Optional:** GitHub Pages / Local Server for hosting  
 
-📌 Status  
-This project is **completed for Task 2** and demonstrates front-end skills.  
-It can be enhanced in the future with JavaScript or backend functionality.
+---
+
+## 🗂️ Features
+1. **Dashboard / Home Page**  
+   - Quick overview of all leads and customers.  
+   - Search or filter leads by name, company, or status.
+
+2. **Lead Management**  
+   - Add new leads with details like name, email, phone, and status.  
+   - Edit existing leads to update their information.  
+   - Delete leads when no longer needed.
+
+3. **Contact / Interaction Tracking**  
+   - Keep track of follow-ups or interactions with leads.  
+   - Easy-to-use form for notes and updates.
+
+4. **Responsive Design**  
+   - Works on desktop and mobile devices.  
+   - Simple and clean user interface for quick navigation.  
+
+---
+
+## 🌐 Live Demo
+Check the live demo of the CRM here:  
+[**Live Link Placeholder**]( https://maheshwari63.github.io/FUTURE_FS_02/ )
+> Replace this with your deployed link (e.g., GitHub Pages, Netlify, or Vercel).
+
+---
+
+## 🎯 Objectives
+- Gain **real-world web application development experience**.  
+- Learn **basic CRM functionalities** for business use.  
+- Apply **HTML, CSS, and JavaScript** to create interactive web apps.  
+- Practice **user interface design** for usability and clarity.  
+- Understand **GitHub workflow** and project deployment.  
+
+---
+
+## 📌 How to Run Locally
+1. Clone the repository:
+```bash
+git clone https://github.com/maheshwari63/teaser-mini-crm.git
