@@ -1,28 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mini CRM</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard - Lead Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="dashboard">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="nav-left">
+                <i class="fas fa-bars menu-toggle"></i>
+                <h1><i class="fas fa-chart-line"></i> CRM Dashboard</h1>
+            </div>
+            <div class="nav-right">
+                <span>Welcome, Maheshwari</span>
+                <i class="fas fa-user-circle profile"></i>
+            </div>
+        </header>
 
-<h1>Mini CRM System</h1>
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    <a href="#" onclick="showContent('dashboard')" class="active">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a href="#" onclick="showContent('leads')">
+                        <i class="fas fa-users"></i> Leads
+                    </a>
+                    <a href="#" onclick="showContent('deals')">
+                        <i class="fas fa-handshake"></i> Deals
+                    </a>
+                    <a href="#" onclick="showContent('activities')">
+                        <i class="fas fa-calendar"></i> Activities
+                    </a>
+                    <a href="#" onclick="showContent('reports')">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </a>
+                </div>
+            </aside>
 
-<form>
-  <input type="text" placeholder="Customer Name">
-  <input type="email" placeholder="Email">
-  <button>Add Customer</button>
-</form>
+            <!-- Main Dashboard Area -->
+            <main class="dashboard-main">
+                <!-- DASHBOARD CONTENT -->
+                <div id="dashboardContent" class="content-area active">
+                    <div class="content-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                        <span class="info-text">Welcome back! Here's what's happening with your leads.</span>
+                    </div>
 
-<h2>Customer List</h2>
+                    <!-- KPI Cards -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card blue">
+                            <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                            <div class="kpi-content">
+                                <h3>Total Leads</h3>
+                                <span class="kpi-number" id="totalLeads">0</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card green">
+                            <div class="kpi-icon"><i class="fas fa-user-plus"></i></div>
+                            <div class="kpi-content">
+                                <h3>New Leads</h3>
+                                <span class="kpi-number" id="newLeads">0</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card purple">
+                            <div class="kpi-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="kpi-content">
+                                <h3>Converted</h3>
+                                <span class="kpi-number" id="convertedLeads">0</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card orange">
+                            <div class="kpi-icon"><i class="fas fa-percentage"></i></div>
+                            <div class="kpi-content">
+                                <h3>Conversion Rate</h3>
+                                <span class="kpi-number" id="conversionRate">0%</span>
+                            </div>
+                        </div>
+                    </div>
 
-<table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Actions</th>
-  </tr>
-</table>
+                    <!-- Controls -->
+                    <div class="controls-row">
+                        <div class="search-section">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search leads..." onkeyup="searchLeads()">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterByStatus('All')">
+                                <i class="fas fa-list"></i> All
+                            </button>
+                            <button class="filter-btn" onclick="filterByStatus('New')">
+                                <i class="fas fa-user-plus"></i> New
+                            </button>
+                            <button class="filter-btn" onclick="filterByStatus('Converted')">
+                                <i class="fas fa-check"></i> Converted
+                            </button>
+                        </div>
+                        <button class="add-lead-btn" onclick="showAddLeadForm()">
+                            <i class="fas fa-plus"></i> Add Lead
+                        </button>
+                    </div>
 
+                    <!-- Dashboard Leads Table -->
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-user"></i> Name</th>
+                                    <th><i class="fas fa-envelope"></i> Email</th>
+                                    <th><i class="fas fa-globe"></i> Source</th>
+                                    <th><i class="fas fa-tag"></i> Status</th>
+                                    <th><i class="fas fa-cogs"></i> Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardLeadTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- LEADS CONTENT -->
+                <div id="leadsContent" class="content-area">
+                    <div class="content-header">
+                        <h2><i class="fas fa-users"></i> All Leads</h2>
+                        <span class="info-text">Manage your complete leads pipeline</span>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-user"></i> Name</th>
+                                    <th><i class="fas fa-envelope"></i> Email</th>
+                                    <th><i class="fas fa-globe"></i> Source</th>
+                                    <th><i class="fas fa-tag"></i> Status</th>
+                                    <th><i class="fas fa-cogs"></i> Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- DEALS CONTENT -->
+                <div id="dealsContent" class="content-area">
+                    <div class="content-header">
+                        <h2><i class="fas fa-handshake"></i> Deals Pipeline</h2>
+                        <span class="info-text">Track your sales opportunities</span>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-handshake" style="font-size: 4rem; color: #d1d5db;"></i>
+                        <h3>No deals yet</h3>
+                        <p>Convert leads to create your first deal! 🚀</p>
+                    </div>
+                </div>
+
+                <!-- ACTIVITIES CONTENT -->
+                <div id="activitiesContent" class="content-area">
+                    <div class="content-header">
+                        <h2><i class="fas fa-calendar"></i> Recent Activities</h2>
+                        <span class="info-text">Calls, emails, meetings and tasks</span>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-calendar-check" style="font-size: 4rem; color: #d1d5db;"></i>
+                        <h3>No activities logged</h3>
+                        <p>Create activities when working with leads 📅</p>
+                    </div>
+                </div>
+
+                <!-- REPORTS CONTENT -->
+                <div id="reportsContent" class="content-area">
+                    <div class="content-header">
+                        <h2><i class="fas fa-chart-bar"></i> Analytics & Reports</h2>
+                        <span class="info-text">Performance insights and trends</span>
+                    </div>
+                    <div class="placeholder-content">
+                        <i class="fas fa-chart-line" style="font-size: 4rem; color: #d1d5db;"></i>
+                        <h3>Reports coming soon</h3>
+                        <p>Lead conversion trends, source analysis & more 📊</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Add Lead Modal -->
+        <div class="modal" id="addLeadModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-user-plus"></i> Add New Lead</h3>
+                    <span class="close" onclick="hideAddLeadForm()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="name" placeholder="Full Name">
+                    <input type="email" id="email" placeholder="Email Address">
+                    <input type="text" id="source" placeholder="Lead Source (Website, Referral, etc)">
+                    <button class="btn-primary" onclick="addLead()">
+                        <i class="fas fa-save"></i> Save Lead
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
